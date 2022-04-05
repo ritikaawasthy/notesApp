@@ -1,0 +1,24 @@
+.landing-text-container{
+  display:flex;
+  padding: 0rem 5rem;
+  flex-flow: column wrap;
+  gap:2rem;
+  justify-content: center;
+}
+
+.landing-section{
+  padding:0rem 3rem;
+}
+
+.landing-text-content{
+  padding:1rem;
+  display: flex;
+  flex-flow: column wrap;
+  gap:1rem;
+  justify-content:space-between;
+  align-items: space-between;;
+}
+
+.center-txt{
+  text-align: center;
+}
