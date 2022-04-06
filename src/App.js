@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import MockAPI from "./mockman";
-import {LandingPage} from "./pages/index";
+import {LandingPage, HomePage} from "./pages/index";
 import {NavBar} from "./components/index";
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
       <NavBar/>
       <Routes>
         <Route path="/" element={<LandingPage/>}></Route>
+        <Route path="/home" element={<HomePage/>}></Route>
         <Route path="/mockman" element={<MockAPI/>}></Route>
       </Routes>
     </div>

@@ -1,0 +1,25 @@
+.side-nav{
+ width:15rem;
+ display: flex;
+ flex-flow:column wrap;
+ justify-content: flex-start;
+ gap:1rem;
+ padding: 6rem 3rem;
+ border-right: 2px solid lightgrey;
+ margin:2rem 0rem;
+}
+
+ul.side-nav> li:hover{
+  cursor:pointer;
+  border-bottom: 2px solid black;
+  font-weight: bold;
+}
+
+ul.side-nav> li{
+  border-bottom: 2px solid lightgrey;
+
+}
+
+.current{
+  color: var(--primary);
+}
