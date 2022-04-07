@@ -1,3 +1,5 @@
+
+
 .homepage-layout-container{
   display: grid;
   grid-template-areas: "side main";
@@ -5,6 +7,7 @@
   grid-template-rows: 1fr;
   min-height:100vh;
   max-width: 100vw;
+  padding: 0rem 6rem;
 }
 
 .homepage-layout-side{
@@ -16,8 +19,35 @@
 
 .homepage-layout-main{
   grid-area: main;
-  padding: 0.5rem 2rem;
+  padding: 4rem 2rem;
   display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  gap:1rem;
+}
+
+.note{
+  border-radius: 0.5rem;
+  padding:1rem;
+}
+
+.note-body{
+  max-height: 8rem;
+  overflow: scroll;
+  margin:0rem 0.5rem 0.5rem 0rem ;
+  padding:1rem;
+  width: 94%;
+}
+
+.note-footer{
+  display:flex;
   flex-flow: row wrap;
   gap:1rem;
+  align-items: center;
+}
+
+textarea{
+  text-decoration: none;
+  font-family: inherit;
+  resize:vertical;
 }
