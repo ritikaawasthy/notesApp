@@ -1,10 +1,21 @@
 import "./App.css";
-import logo from "./logo.png";
-
+import "./style/color.css";
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
+import MockAPI from "./mockman";
+import {LandingPage, HomePage} from "./pages/index";
+import {NavBar} from "./components/index";
 function App() {
   return (
     <div className="App">
-      
+      <NavBar/>
+      <Routes>
+        <Route path="/" element={<LandingPage/>}></Route>
+        <Route path="/home" element={<HomePage/>}></Route>
+        <Route path="/mockman" element={<MockAPI/>}></Route>
+      </Routes>
     </div>
   );
 }

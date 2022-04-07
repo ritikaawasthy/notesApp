@@ -1,0 +1,43 @@
+html{
+  --primary: #240F6F;
+  --primary-light: #3920AB;
+  --primary-very-light: #7676E6;
+  --secondary: #5D5D5D;
+  --secondary-light: #ebebeb;
+  --white: white;
+}
+
+.primary-col{
+  color: var(--primary);
+}
+
+.primary-bg{
+  background-color: var(--primary);
+  color: var(--secondary-light);
+}
+
+.secondary-light-bg{
+  background-color: var(--secondary-light);
+}
+
+.primary-light-col{
+  color: var(--primary-light);
+}
+
+.primary-very-light-col{
+  color: var(--primary-very-light);
+}
+
+.secondary-col{
+  color: var(--secondary);
+}
+
+.secondary-light-col{
+  color: var(--secondary-light);
+}
+.primary-border{
+  border-top: 2px solid var(--primary);
+}
+.white-bg{
+  background-color: var(--white);
+}
