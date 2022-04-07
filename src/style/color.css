@@ -3,7 +3,8 @@ html{
   --primary-light: #3920AB;
   --primary-very-light: #7676E6;
   --secondary: #5D5D5D;
-  --secondary-light: #e6e6e6;
+  --secondary-light: #ebebeb;
+  --white: white;
 }
 
 .primary-col{
@@ -36,4 +37,7 @@ html{
 }
 .primary-border{
   border-top: 2px solid var(--primary);
+}
+.white-bg{
+  background-color: var(--white);
 }
