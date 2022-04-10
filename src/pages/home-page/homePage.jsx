@@ -4,13 +4,15 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPaintbrush, faEdit, faArchive, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {useState} from "react";
 import {useParams} from "react-router-dom";
+// import {useData} from "../../context/DataContext";
 
 function HomePage() {
   const actionType= useParams();
-  
+  // const {setNote} = useData();
+
   return (<section className="homepage-layout-container secondary-light-bg">
     <article className="homepage-layout-side">
-      <SideNav addNode={setNote}/>
+      <SideNav/>
     </article>
     <article className="homepage-layout-main">
       <div class="input-container primary-col">

@@ -1,4 +1,4 @@
-import {useContext, createContext,useReducer} from "react";
+import {useContext,useState, createContext,useReducer} from "react";
 import {encodedToken} from "../encodedtoken.jsx";
 const DataContext=createContext();
 
@@ -36,10 +36,10 @@ const DataProvider=({children})=>{
   const token= encodedToken;
 
   return(
-    <DataContext.Provider value={
+    <DataContext.Provider value={{
       note, setNote,noteList, setNoteList,state, dispatch, token, colors
-    }>
-    {value}
+    }}>
+    {children}
     </DataContext.Provider>
   );
 };
