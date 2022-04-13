@@ -13,7 +13,7 @@ function App() {
       <NavBar/>
       <Routes>
         <Route path="/" element={<LandingPage/>}></Route>
-        <Route path="/home" element={<HomePage/>}></Route>
+        <Route path="/note" element={<HomePage/>}></Route>
         <Route path="/mockman" element={<MockAPI/>}></Route>
       </Routes>
     </div>

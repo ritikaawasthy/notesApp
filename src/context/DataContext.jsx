@@ -1,45 +1,61 @@
-import {useContext, createContext,useReducer} from "react";
-import {encodedToken} from "../encodedtoken.jsx";
+import {useContext, createContext,useReducer, useState, useEffect} from "react";
+import {token} from "../encodedtoken.jsx";
+import { v4 as uuid } from "uuid";
 const DataContext=createContext();
 
 const reducerFunction=(state, action)=>{
   switch(action.type){
-    case "GET_NOTELIST":
-    return({...state, notes: action.payload });
-    case "GET_ARCHIVES":
-    return({...state, archives: action.payload});
-    case "GET_LABELS":
-    return({...state, labels: action.payload});
-    case "GET_TRASH":
-    return({...state, trash: action.payload})
+    case "ADD_TO_NOTELIST":
+    return({...state, notes: [...state.notes,action.payload] });
+    case "ADD_TO_ARCHIVES":
+    return({...state, archives: [...state.archives,action.payload]});
+    case "ADD_TO_LABELS":
+    return({...state, labels: [...state.labels,action.payload]});
+    case "ADD_TO_TRASH":
+    return({...state, trash: [...state.trash,action.payload]})
   }
 
 }
 
 const DataProvider=({children})=>{
-  const [note, setNote]= useState("");
+  useEffect(()=>{
+    (async function(){
+      try{
+        const response= await axios.get('/api/notes', {
+          headers:{ authorization: token}
+        });
+        setNoteList(()=>response.data.notes)
+      }catch(error){
+        console.log(error)
+      }
+      })
+  },[])
+
+  const [note, setNote]= useState({
+      head: "",
+      body: "",
+      color:"white-bg",
+      priority: "",
+      tags:[],
+      date: new Date().toLocaleDateString(),
+  });
   const [noteList, setNoteList]= useState([]);
+  const [addNoteCard, setAddNoteCard]= useState("none");
   const [state, dispatch]= useReducer(reducerFunction, {
     notes: [],
-    labels: [],
+    labels: ["work"],
     archives:[],
     trash: []
   });
 
-  const colors={
-    rose: "#FDE2E4",
-    mint: "#E2ECE9",
-    lavender: "#DFE7FD",
-    lemon: "#FBF8CC"
-  }
 
-  const token= encodedToken;
+  const showAddNote=(bool)=>bool?setAddNoteCard(()=>"flex"):setAddNoteCard(()=>"none")
 
   return(
-    <DataContext.Provider value={
-      note, setNote,noteList, setNoteList,state, dispatch, token, colors
-    }>
-    {value}
+    <DataContext.Provider value={{
+      note, setNote,noteList, setNoteList,state, dispatch, addNoteCard, setAddNoteCard, showAddNote, token
+    }}>
+    {children}
     </DataContext.Provider>
   );
 };
