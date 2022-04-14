@@ -43,7 +43,7 @@ const DataProvider=({children})=>{
   const [addNoteCard, setAddNoteCard]= useState("none");
   const [state, dispatch]= useReducer(reducerFunction, {
     notes: [],
-    labels: ["work"],
+    tags: ["work"],
     archives:[],
     trash: []
   });
