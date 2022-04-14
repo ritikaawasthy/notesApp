@@ -1,10 +1,9 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPalette, faClose, faTag} from '@fortawesome/free-solid-svg-icons';
 import {useData} from "../../context/DataContext";
-import axios from "axios";
 
 function NoteOverlay(){
-    const {note, setNote,setNoteList,addNoteCard, showAddNote, token, }= useData();
+    const {note, setNote,state,dispatch,addNoteCard, showAddNote, token,editNote, noteSubmitHandler }= useData();
 
     const noteChangeHandler=(event)=>{
       setNote(()=>({...note, [event.target.name]:event.target.value  }))
@@ -20,33 +19,11 @@ function NoteOverlay(){
       }
     };
 
-    async function noteSubmitHandler(event){
-      event.preventDefault();
-          try{
-            const response= await axios.post(`/api/notes`,
-            {note},
-            {
-              headers:{ authorization: token}
-            }
-          );
-          setNoteList(()=>response.data.notes)
-          showAddNote(false)
-          setNote({
-            head: "",
-            body: "",
-            color:"white-bg",
-            priority: "",
-            labels: []
-          })
-          }
-          catch(error){
-            console.log(error)
-          }
-      }
+
 
   return(
-    <section className="addNoteCard" style={{display: `${addNoteCard}`}}>
-        <form onChange={(event)=>noteChangeHandler(event)} onSubmit={(event)=>noteSubmitHandler(event)} className={`card card-shadow w-xxl note ${note.color}`}>
+    <section className="addNoteCard" style={{display: `${addNoteCard.class}`}}>
+        <form onChange={(event)=>noteChangeHandler(event)} onSubmit={(event)=>(addNoteCard.type=='EDIT')?editNote(event,note):noteSubmitHandler(event)} className={`card card-shadow w-xxl note ${note.color}`}>
           <div className="card-content stacked">
             <div className="addNoteCardHead">
               <div class=" primary-col w-full">
@@ -55,7 +32,7 @@ function NoteOverlay(){
                   <label className="input-label f-l ">Note Heading</label>
                 </div>
               </div>
-              <FontAwesomeIcon icon={faClose} onClick={()=>showAddNote(false)} className="primary-col f-xl"></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faClose} onClick={()=>showAddNote(false,"")} className="primary-col f-xl"></FontAwesomeIcon>
             </div>
             <textarea name="body" className="note-body f-s" value={note.body}></textarea>
             <div className="note-footer end">
