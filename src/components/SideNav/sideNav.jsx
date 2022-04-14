@@ -5,7 +5,7 @@ import {useData} from "../../context/DataContext";
 import {useState} from "react";
 function SideNav(props) {
 
-const {setNoteList, setNote, setAddNoteCard, showAddNote}= useData()
+const {showAddNote}= useData()
 
 
   return (<ul class="f-m side-nav ">
