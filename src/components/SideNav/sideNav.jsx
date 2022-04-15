@@ -18,7 +18,8 @@ const {showAddNote}= useData()
       <p>Label</p>
      </li>
     <li className='container'>
-      <FontAwesomeIcon className="mg-r-s" icon={faBoxArchive}></FontAwesomeIcon><p>Archive</p></li>
+      <FontAwesomeIcon className="mg-r-s" icon={faBoxArchive}></FontAwesomeIcon><p>Archive</p>
+    </li>
     <li className='container'>
       <FontAwesomeIcon className="mg-r-s" icon={faTrash}></FontAwesomeIcon><p>Trash</p></li>
     <a className="btn primary-bg side-nav-btn center-txt" onClick={()=>showAddNote(true,"ADD")}>Create Note</a>

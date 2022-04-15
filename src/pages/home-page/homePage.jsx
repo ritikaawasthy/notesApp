@@ -1,6 +1,8 @@
 import "./home-page.css";
 import {SideNav, Note, NoteOverlay} from '../../components/index';
+import {useData} from "../../context/DataContext";
 function HomePage() {
+  const {state}= useData()
   return (
     <section>
     <section className="homepage-layout-container secondary-light-bg">
@@ -13,7 +15,7 @@ function HomePage() {
         <input placeholder=" " className="input f-m w-full"></input>
         <label className="input-label f-m">Search</label>
       </div>
-      <Note/>
+      <Note data={state.notes}/>
 
    </article>
    <NoteOverlay/>

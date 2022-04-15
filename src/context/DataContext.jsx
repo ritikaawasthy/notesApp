@@ -17,7 +17,10 @@ const reducerFunction=(state, action)=>{
     case "ADD_TO_TRASH":
     return({...state, trash: [...state.trash,action.payload]});
     case "SET_NOTELIST":
-    return({...state, notes:action.payload})
+    return({...state, notes:action.payload});
+    case "REMOVE_FROM_LABELS":
+    return({...state, labels: state.labels.filter((item)=>item!==action.payload)});
+
   }
 
 }
@@ -51,7 +54,7 @@ const DataProvider=({children})=>{
   });
   const [state, dispatch]= useReducer(reducerFunction, {
     notes: [],
-    labels: ["work"],
+    labels: [{ _id: uuid(), tag:"Work" }, { _id: uuid(), tag:"Household" }, { _id: uuid(), tag:"Personal" } ],
     archives:[],
     trash: []
   });
