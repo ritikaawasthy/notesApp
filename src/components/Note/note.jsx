@@ -23,6 +23,22 @@ function Note(props){
   }
 }
 
+async function addToArchive(event,item){
+  console.log("archive added")
+  event.preventDefault();
+  try{
+    const response= await axios.post(`/api/notes/archives/${item._id}`,
+      {item},
+    {
+      headers:{ authorization: token}
+    }
+  );
+  dispatch({type: "SET_ARCHIVELIST", payload:response.data.archives})
+    dispatch({type: "SET_NOTELIST", payload:response.data.notes})
+}catch(error){
+  console.log(error)
+}
+}
 
 
 const triggerEdit=(event,item)=>{
@@ -47,7 +63,7 @@ const triggerEdit=(event,item)=>{
               <div className="note-footer-end">
                 <FontAwesomeIcon icon={faPalette}></FontAwesomeIcon>
                 <FontAwesomeIcon onClick={(event)=>triggerEdit(event,item)} icon={faEdit}></FontAwesomeIcon>
-                <FontAwesomeIcon icon={faArchive}></FontAwesomeIcon>
+                <FontAwesomeIcon onClick={(event)=>addToArchive(event,item)} icon={faArchive}></FontAwesomeIcon>
                 <FontAwesomeIcon onClick={(event)=>addToTrash(event,item)} icon={faTrash}></FontAwesomeIcon>
                 <h5>{item.priority}</h5>
               </div>

@@ -18,6 +18,8 @@ const reducerFunction=(state, action)=>{
     return({...state, trash: [...state.trash,action.payload]});
     case "SET_NOTELIST":
     return({...state, notes:action.payload});
+    case "SET_ARCHIVELIST":
+    return({...state, archives:action.payload});
     case "REMOVE_FROM_LABELS":
     return({...state, labels: state.labels.filter((item)=>item!==action.payload)});
 
