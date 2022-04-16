@@ -22,6 +22,21 @@ const reducerFunction=(state, action)=>{
     return({...state, archives:action.payload});
     case "REMOVE_FROM_LABELS":
     return({...state, labels: state.labels.filter((item)=>item!==action.payload)});
+    //filters
+    case "SORT_PRIORITY_HIGH":
+    return({...state, notes: state.notes.sort((a,b)=>a.priority-b.priority)});
+    case "SORT_PRIORITY_LOW":
+    return({...state, notes:state.notes.sort((a,b)=>b.priority-a.priority)});
+    case "SORT_DATE_HIGH":
+    return({...state, notes:state.notes.sort((a,b)=>{
+      let dateA= new Date(a.date), dateB= new Date(b.date)
+      return(dateA-dateB)
+    })});
+    case "SORT_DATE_LOW":
+    return({...state, notes:state.notes.sort((a,b)=>{
+      let dateA= new Date(a.date), dateB= new Date(b.date)
+      return(dateB-dateA)
+    })});
 
   }
 
@@ -61,6 +76,13 @@ const DataProvider=({children})=>{
     trash: []
   });
 
+  const [showTags, setShowTags]= useState("none");
+
+  const [filter, setFilter]= useState({
+    selectedSort: "",
+    selectedFilter: ""
+  });
+
 
   const showAddNote=(bool,val)=>{
     if(bool){
@@ -71,7 +93,6 @@ const DataProvider=({children})=>{
   }
 
 async function noteSubmitHandler(event){
-    console.log("trigg")
     event.preventDefault();
       try{
         const response= await axios.post(`/api/notes`,
@@ -80,7 +101,6 @@ async function noteSubmitHandler(event){
           headers:{ authorization: token}
         }
       );
-      // setNoteList(()=>response.data.notes)
       dispatch({type:"SET_NOTELIST", payload:response.data.notes})
       showAddNote(false,"")
       setNote({
@@ -88,8 +108,10 @@ async function noteSubmitHandler(event){
         body: "",
         color:"white-bg",
         priority: "",
-        labels: []
+        tags: [],
+        date: new Date().toLocaleDateString(),
       })
+      setShowTags("none")
       }
       catch(error){
         console.log(error)
@@ -99,7 +121,7 @@ async function noteSubmitHandler(event){
     }
 
     async function editNote(event,note){
-      console.log("note", note)
+      setNote({...note, date:new Date().toLocaleDateString() })
       event.preventDefault();
         try{
         const response= await axios.post(`/api/notes/${note._id}`,
@@ -111,6 +133,7 @@ async function noteSubmitHandler(event){
       console.log(response.data.notes)
       dispatch({type: "SET_NOTELIST", payload:response.data.notes})
       showAddNote(false,"")
+
     }catch(error){
       console.log(error)
     }
@@ -119,7 +142,7 @@ async function noteSubmitHandler(event){
 
   return(
     <DataContext.Provider value={{
-      note, setNote,noteList, setNoteList,state, dispatch, addNoteCard, setAddNoteCard, showAddNote, token, noteSubmitHandler, editNote
+      note, setNote,noteList, setNoteList,state, dispatch, addNoteCard, setAddNoteCard, showAddNote, token, noteSubmitHandler, editNote, showTags, setShowTags, filter, setFilter
     }}>
     {children}
     </DataContext.Provider>

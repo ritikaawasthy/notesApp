@@ -17,9 +17,15 @@ ul.side-nav> li:hover{
 
 ul.side-nav> li{
   border-bottom: 2px solid lightgrey;
+  color:var(--primary);
+}
 
+ul.side-nav> li> a{
+  color:var(--primary);
+  text-decoration: none;
 }
 
 .current{
-  color: var(--primary);
+  border-bottom: 2px solid black;
+  font-weight: bold;
 }

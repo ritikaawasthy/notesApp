@@ -11,8 +11,12 @@ function ArchivePage(){
       <SideNav/>
     </article>
     <article className="homepage-layout-main">
+      <div class="input-container primary-col">
+        <input placeholder=" " className="input f-m w-full"></input>
+        <label className="input-label f-m">Search</label>
+      </div>
       <h1>Archive</h1>
-        <Note data={state.archives}/>
+        <Note data={state.archives} type="ARCHIVE" />
     </article>
     <NoteOverlay/>
   </section>
