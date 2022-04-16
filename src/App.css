@@ -1,1 +1,19 @@
+.rose{
+  background-color: #FDE2E4;
+}
 
+.mint{
+  background-color: #E2ECE9;
+}
+
+.lavender{
+  background-color: #DFE7FD;
+}
+
+.lemon{
+  background-color: #FBF8CC;
+}
+
+input,button{
+  font-family: inherit;
+}
