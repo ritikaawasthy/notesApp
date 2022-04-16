@@ -6,6 +6,7 @@ function HomePage() {
   return (
     <section>
     <section className="homepage-layout-container secondary-light-bg">
+
     <article className="homepage-layout-side">
       <SideNav/>
     </article>

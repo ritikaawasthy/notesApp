@@ -5,8 +5,8 @@ import {useData} from "../../context/DataContext";
 import {useState} from "react";
 function SideNav(props) {
 
-const {showAddNote}= useData()
 
+const {showAddNote}= useData()
 
   return (<ul class="f-m side-nav ">
     <li className='container'>
@@ -22,7 +22,9 @@ const {showAddNote}= useData()
     </li>
     <li className='container'>
       <FontAwesomeIcon className="mg-r-s" icon={faTrash}></FontAwesomeIcon><p>Trash</p></li>
+
     <a className="btn primary-bg side-nav-btn center-txt" onClick={()=>showAddNote(true,"ADD")}>Create Note</a>
+
   </ul>);
 }
 
