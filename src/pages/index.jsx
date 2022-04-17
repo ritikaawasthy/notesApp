@@ -4,3 +4,7 @@ import {HomePage} from "./home-page/homePage";
 export{HomePage}
 import {LabelPage} from "./label-page/labelPage";
 export{LabelPage}
+import {ArchivePage} from "./archive-page/archivePage";
+export{ArchivePage}
+import {TrashPage} from "./trash-page/trashPage";
+export{TrashPage}

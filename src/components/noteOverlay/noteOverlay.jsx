@@ -1,12 +1,13 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPalette, faClose, faTag} from '@fortawesome/free-solid-svg-icons';
 import {useData} from "../../context/DataContext";
-
+import {useState} from "react";
 function NoteOverlay(){
-    const {note, setNote,state,dispatch,addNoteCard, showAddNote, token,editNote, noteSubmitHandler }= useData();
+    const {note, setNote,state,dispatch,addNoteCard, showAddNote, token,editNote, noteSubmitHandler, showTags, setShowTags }= useData();
 
     const noteChangeHandler=(event)=>{
       setNote(()=>({...note, [event.target.name]:event.target.value  }))
+      console.log(note)
     }
 
     const changeCardColor = (currentColor) => {
@@ -18,6 +19,8 @@ function NoteOverlay(){
         setNote(()=>({...note, color: colors[0]}))
       }
     };
+
+
 
 
 
@@ -37,14 +40,20 @@ function NoteOverlay(){
             <textarea name="body" className="note-body f-s" value={note.body}></textarea>
             <div className="note-footer end">
               <h5>Priority:</h5>
-              <input type="radio" name="priority" value='High'></input>
+              <input type="radio" name="priority" value={1}></input>
               <label>High</label>
-              <input type="radio" name="priority" value='Medium'></input>
+              <input type="radio" name="priority" value={2}></input>
               <label>Medium</label>
-              <input type="radio" name="priority" value='Low'></input>
+              <input type="radio" name="priority" value={3}></input>
               <label>Low</label>
                 <FontAwesomeIcon onClick={()=>changeCardColor(note.color)} icon={faPalette}></FontAwesomeIcon>
-                <FontAwesomeIcon icon={faTag}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faTag} onClick={()=>setShowTags("flex")}></FontAwesomeIcon>
+            </div>
+            <div style={{display:`${showTags}`}}>
+              {state.labels.map((item)=><div className="tag-menu"> <input type="checkbox" name="tags" value={item.tag}></input>
+            <label className="badge badge-text primary">{item.tag}</label>
+              </div>
+              )}
             </div>
           </div>
           <button className="btn primary-bg f-m center-txt" type="submit" >Submit</button>

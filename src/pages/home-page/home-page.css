@@ -7,14 +7,14 @@
   grid-template-rows: 1fr;
   min-height:100vh;
   max-width: 100vw;
-  padding: 0rem 6rem;
+  padding: 0rem 3rem;
 }
 
 .homepage-layout-side{
   grid-area: side;
   padding: 1.5rem;
   position: fixed;
-  width: 18rem;
+  width: 10rem;
 }
 
 .homepage-layout-main{
@@ -29,6 +29,7 @@
 .note{
   border-radius: 0.5rem;
   padding:1rem;
+  margin: 0.5rem 0rem;
 }
 
 .note-body{
@@ -36,7 +37,7 @@
   overflow: scroll;
   margin:0rem 0.5rem 0.5rem 0rem ;
   padding:1rem;
-  width: 94%;
+  width:31.5rem;
 }
 
 .note-footer{
@@ -50,6 +51,23 @@
 .note-footer-end{
   display:flex;
   gap:0.5rem;
+}
+
+.note-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.note-filter{
+  border-left: 2px solid lightgrey;
+  padding:0rem 1rem;
+  width: fit-context;
+}
+
+.note-filter>ul{
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
 }
 
 textarea{
@@ -76,4 +94,9 @@ textarea{
   width:100%;
   justify-content:space-between;
   align-items: center
+}
+
+.tag-menu{
+  display: flex;
+
 }
