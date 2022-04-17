@@ -6,8 +6,8 @@ import {NavLink} from "react-router-dom";
 
 function SideNav(props) {
 
-const {showAddNote}= useData()
 
+const {showAddNote}= useData()
 
   return (<ul class="f-m side-nav ">
     <li>
@@ -33,6 +33,7 @@ const {showAddNote}= useData()
       </NavLink>
     </li>
     <a className="btn primary-bg side-nav-btn center-txt" onClick={()=>showAddNote(true,"ADD")}>Create Note</a>
+
   </ul>);
 }
 
