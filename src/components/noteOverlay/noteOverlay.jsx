@@ -40,17 +40,17 @@ function NoteOverlay(){
             <textarea name="body" className="note-body f-s" value={note.body}></textarea>
             <div className="note-footer end">
               <h5>Priority:</h5>
-              <input type="radio" name="priority" value={1}></input>
+              <input type="radio" name="priority" value={1} key={1}></input>
               <label>High</label>
-              <input type="radio" name="priority" value={2}></input>
+              <input type="radio" name="priority" value={2} key={2}></input>
               <label>Medium</label>
-              <input type="radio" name="priority" value={3}></input>
+              <input type="radio" name="priority" value={3} key={3}></input>
               <label>Low</label>
                 <FontAwesomeIcon onClick={()=>changeCardColor(note.color)} icon={faPalette}></FontAwesomeIcon>
                 <FontAwesomeIcon icon={faTag} onClick={()=>setShowTags("flex")}></FontAwesomeIcon>
             </div>
             <div style={{display:`${showTags}`}}>
-              {state.labels.map((item)=><div className="tag-menu"> <input type="checkbox" name="tags" value={item.tag}></input>
+              {state.labels.map((item)=><div key={item.tag} className="tag-menu"> <input type="checkbox" name="tags" value={item.tag}></input>
             <label className="badge badge-text primary">{item.tag}</label>
               </div>
               )}

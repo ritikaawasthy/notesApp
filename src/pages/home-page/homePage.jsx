@@ -40,7 +40,7 @@ function HomePage() {
               console.log("filter",filter)
             }} className="note-filter">
         <ul>
-          <li>
+          <li key="label">
             <h5>Labels</h5>
             {state.labels.map((item)=><div>
              <input type="checkbox" name="tag" value={item.tag}></input>
@@ -49,7 +49,7 @@ function HomePage() {
             )}
           </li>
             <h4 className="fw-li">Sort By</h4>
-          <li>
+          <li key="date">
             <h5>Date</h5>
              <label>
               <input type="radio" name="sort" value="SORT_DATE_HIGH" checked={filter.selectedSort==="SORT_DATE_HIGH"} name="selectedSort" onChange={(event)=>sortChangeHandler(event)}></input>
@@ -63,7 +63,7 @@ function HomePage() {
                Low - High</label>
           </li>
 
-          <li>
+          <li key="priority">
             <h5>Priority</h5>
               <input type="radio" name="sort" value="SORT_PRIORITY_HIGH" checked={filter.selectedSort==="SORT_PRIORITY_HIGH"}
                 name="selectedSort"
@@ -76,7 +76,7 @@ function HomePage() {
                 ></input>
               <label>Low - High</label>
           </li>
-          
+
         </ul>
         </form>
         </div>
