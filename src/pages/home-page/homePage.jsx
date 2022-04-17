@@ -1,7 +1,8 @@
 import "./home-page.css";
 import {SideNav, Note, NoteOverlay} from '../../components/index';
 import {useData} from "../../context/DataContext";
-import {useState} from "react";
+
+
 function HomePage() {
   const {state, filter, setFilter, dispatch}= useData();
   const filterData= state.notes;
@@ -9,11 +10,6 @@ function HomePage() {
   setFilter({...filter,[event.target.name]: event.target.value})
   dispatch({type:event.target.value})
   }
-
-  console.log(filter)
-  console.log(state.notes)
-
-
 
   return (
     <section>

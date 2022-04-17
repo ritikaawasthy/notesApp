@@ -1,5 +1,6 @@
 import "./landing-page.css";
 import {hero} from "../../media/index";
+import {Link} from "react-router-dom";
 function LandingPage() {
   return (<section className="page-container">
     <section className="landing-section">
@@ -16,7 +17,7 @@ function LandingPage() {
               <h3 className="primary-very-light-col">Note taking app</h3>
             </div>
             <p className="f-m">Manage your daily tasks and workflow in a modern wayand boost your efficiency with minimal efforts</p>
-            <a type="button" className="btn primary-bg f-m center-txt">Get Started</a>
+            <Link to="/note" className="btn primary-bg f-m center-txt">Get Started</Link>
           </article>
         </div>
         <div className="grid-two-layout-right">
